@@ -2,10 +2,10 @@
 
 var _ = require('lodash'),
     gulp = require('gulp'),
-    shell = require('gulp-shell'),
     gutil = require('gulp-util'),
     fileExists = require('file-exists'),
-    file = require('gulp-file');
+    file = require('gulp-file'),
+    msbuild = require('gulp-msbuild');
 
 require('es6-promise').polyfill();
 
@@ -99,10 +99,18 @@ function transform(options) {
 
 
     setup(_options);
-
+    
     return createProj(_options).then(function() {
-        return gulp.task('transform', shell.task(_options.msBuildPath + ' ./_msbuild.proj /t:Transform'));
+      
+        gulp.src('./_msbuild.proj')
+            .pipe(msbuild({
+                targets: ['Transform'],
+                toolsVersion: parseFloat(_options.netVersion)
+                
+            }
+        ));      
     });
+ 
 }
 
 module.exports = transform;

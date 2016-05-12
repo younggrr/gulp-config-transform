@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/a11smiles/gulp-config-transform",
   "dependencies": {
-    "gulp": "^3.8.6",
-    "gulp-shell": "^0.5.1",
-    "gulp-util": "^3.0.7",
-    "lodash": "^3.9.3",
+    "es6-promise": "*",
     "file-exists": "1.0.0",
+    "gulp": "^3.8.6",
     "gulp-file": "0.2.0",
-    "es6-promise": "*"
+    "gulp-msbuild": "^0.3.2",
+    "gulp-util": "^3.0.7",
+    "lodash": "^3.9.3"
   }
 }
